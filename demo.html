@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TextNagger</title>
+</head>
+
+<body>
+    <h1>TextNagger</h1>
+    <textarea id="nagger" onfocus="nagger()"></textarea>
+    <p id="hurry"></p>
+    <script>
+        function rand(items) {
+            return items[items.length * Math.random() | 0];
+        }
+        var n = document.getElementById('nagger');
+        var h = document.getElementById('hurry');
+        var i = null;
+        var nags = ['Hurry up!', 'Don\'t take all day!', 'Stop dilly-dallying!', 'Can\'t you hurry up?', 'You really must hurry up!', 'Make haste!', 'You\'re such a slow-poke!', 'Will this take forever?']
+
+        function nagger() {
+            n.removeAttribute('onfocus');
+            if (document.activeElement == n) {
+                i = setInterval(function() {
+                    if (document.activeElement == n) {
+                        h.innerHTML = rand(nags);
+                    }
+                }, 1000)
+            }
+        }
+    </script>
+</body></html>
